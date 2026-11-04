@@ -2,7 +2,7 @@
 
 **Privacy policies change constantly and nobody can keep up. Fine Print does it for you.**
 
-A free, open-source browser extension that watches the privacy policies of the sites you use, flags what changed in plain words (AI training, data sharing, tracking, arbitration...), quotes the new wording, and links you to the settings where you can do something about it. It works for any site with a privacy policy, not only Meta and Google.
+A free, open-source browser extension that tells you what the sites you use are doing with your data today (AI training, ads, sharing, retention...), quotes the policy sentence it comes from, and gives you steps and links when there is something you can switch off. It also watches those policies and flags when the wording changes. It works for any site with a privacy policy, not only Meta and Google.
 
 > Status: v0.1, early. The detector is rule-based and the registry links are community-checkable, so treat every card as a pointer to the original text, not as legal advice.
 
@@ -14,12 +14,17 @@ A free, open-source browser extension that watches the privacy policies of the s
 4. Click **Load unpacked** and choose the `extension/` folder.
 5. Click the Fine Print icon (pin it from the puzzle-piece menu).
 6. **Services** tab: tick a few services, or open any site and press **Watch the site I'm on**.
+6b. The **Check-up** tab (first tab) shows, for each service you tick, what is *Happening*, *Not happening* or *Unclear*, with the quote and steps.
 7. **About** tab: press **Add a sample change** to see exactly what a change card looks like. The red badge on the icon counts open cards.
 8. Press **Check now** to pull the latest public feed. Real cards appear only when a watched policy actually changes, so a quiet feed is normal.
 
 To run the checks yourself: `npm test` (unit tests) and `node scripts/watch.mjs` (fetches policies and updates `feed/feed.json`, needs Node 20+).
 
 ## How it works
+
+**Check-up (what is happening now).** Hand-written cards for the big services (Meta and Google first), each quoting the policy word for word. The daily Action re-checks every quote against the newest policy text. If a quote disappears, the card hides itself until someone re-verifies it, so a stale card can't pass as current. Sites you add yourself get an automatic keyword scan, clearly labelled as auto-detected, with sentences like "we do not sell..." shown as *Policy says it does NOT*.
+
+**Change tracking (what just changed).**
 
 ```
 GitHub Action (daily) -> fetch policy -> strip to text -> diff vs last snapshot
@@ -45,7 +50,8 @@ A static file on GitHub, a free scheduled GitHub Action, no paid APIs. The only 
 
 ## Known limits
 
-- Meta, Reddit and Amazon policy pages were not captured in the first run (blocked or built with JavaScript), so they are not tracked yet. Fixing this is the top item.
+- Reddit and Amazon policy pages are not captured yet (Reddit renders empty even in a headless browser, Amazon returns 403 to GitHub's servers). Meta works via a headless browser.
+- Check-up cards exist for Meta and Google only so far.
 - Registry policy and settings links were written from memory and are marked `verified: false`. Please check and fix them.
 - A keyword detector misses subtle rewording and can over-flag. Always read the quoted text.
 - Chrome-family browsers only for now.
