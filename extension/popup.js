@@ -79,3 +79,17 @@ $('donate').href = DONATE_URL;
 
 registry = (await (await fetch(chrome.runtime.getURL('services.json'))).json()).services;
 await Promise.all([renderInbox(), renderServices()]);
+
+// Lets you see what a change card looks like without waiting for a real policy change.
+$('sample').onclick = async () => {
+  const { items } = await chrome.storage.local.get({ items: [] });
+  const now = new Date().toISOString();
+  await chrome.storage.local.set({ items: [{
+    id: `sample-${Date.now()}`, service: 'google', url: 'https://policies.google.com/privacy', detectedAt: now, impact: 'high',
+    categories: ['ai_training'], autoDetected: true,
+    summary: 'SAMPLE: New wording touches: AI training. 1 sentence(s) added, 0 removed.',
+    evidence: ['We may use your public content to train our generative AI models.'],
+    actions: [{ label: 'Review ad personalization', url: 'https://myadcenter.google.com', verified: false }],
+  }, ...items] });
+  renderInbox();
+};
