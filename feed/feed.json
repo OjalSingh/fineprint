@@ -1,4 +1,36 @@
 {
- "updatedAt": "2026-11-04T20:19:15.433Z",
- "changes": []
+ "updatedAt": "2026-11-04T20:23:56.590Z",
+ "changes": [
+  {
+   "id": "meta-775b3a18e21c",
+   "service": "meta",
+   "url": "https://www.facebook.com/privacy/policy/",
+   "detectedAt": "2026-11-04T20:23:56.590Z",
+   "impact": "low",
+   "categories": [],
+   "summary": "1 sentence(s) added, 3 removed. No sensitive topics detected, but read the diff.",
+   "evidence": [],
+   "added": [
+    "Contact the Data Protection Officer for Meta Platforms, Inc."
+   ],
+   "removed": [
+    "Read the United States Regional Privacy Notice for more details about how we handle Personal Information and how to exercise your rights.",
+    "Privacy notice for United States residents",
+    "You can learn more about the consumer privacy rights that may be available to you by reviewing the United States Regional Privacy Notice ."
+   ],
+   "autoDetected": true,
+   "actions": [
+    {
+     "label": "Review ad preferences",
+     "url": "https://www.facebook.com/adpreferences",
+     "verified": false
+    },
+    {
+     "label": "Privacy center",
+     "url": "https://www.facebook.com/privacy/center/",
+     "verified": false
+    }
+   ]
+  }
+ ]
 }
