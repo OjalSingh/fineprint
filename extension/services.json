@@ -1,31 +1,170 @@
 {
   "_note": "Policy URLs and settings links are from memory and marked verified:false until someone checks them. Pull requests welcome.",
   "services": [
-    { "id": "google", "name": "Google", "domains": ["google.com", "youtube.com", "gmail.com"], "policyUrl": "https://policies.google.com/privacy",
+    {
+      "id": "google",
+      "name": "Google",
+      "domains": [
+        "google.com",
+        "youtube.com",
+        "gmail.com"
+      ],
+      "policyUrl": "https://policies.google.com/privacy",
       "actions": [
-        { "label": "Review ad personalization", "url": "https://myadcenter.google.com", "verified": false },
-        { "label": "Review activity controls", "url": "https://myaccount.google.com/activitycontrols", "verified": false }
-      ] },
-    { "id": "meta", "name": "Meta (Facebook, Instagram)", "domains": ["facebook.com", "instagram.com", "whatsapp.com"], "policyUrl": "https://www.facebook.com/privacy/policy/",
+        {
+          "label": "Review ad personalization",
+          "url": "https://myadcenter.google.com",
+          "verified": false
+        },
+        {
+          "label": "Review activity controls",
+          "url": "https://myaccount.google.com/activitycontrols",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "id": "meta",
+      "name": "Meta (Facebook, Instagram)",
+      "domains": [
+        "facebook.com",
+        "instagram.com",
+        "whatsapp.com"
+      ],
+      "policyUrl": "https://www.facebook.com/privacy/policy/",
       "actions": [
-        { "label": "Review ad preferences", "url": "https://www.facebook.com/adpreferences", "verified": false },
-        { "label": "Privacy center", "url": "https://www.facebook.com/privacy/center/", "verified": false }
-      ] },
-    { "id": "microsoft", "name": "Microsoft", "domains": ["microsoft.com", "live.com", "linkedin.com"], "policyUrl": "https://privacy.microsoft.com/privacystatement",
-      "actions": [{ "label": "Privacy dashboard", "url": "https://account.microsoft.com/privacy", "verified": false }] },
-    { "id": "linkedin", "name": "LinkedIn", "domains": ["linkedin.com"], "policyUrl": "https://www.linkedin.com/legal/privacy-policy",
-      "actions": [{ "label": "Data privacy settings", "url": "https://www.linkedin.com/mypreferences/d/categories/privacy", "verified": false }] },
-    { "id": "spotify", "name": "Spotify", "domains": ["spotify.com"], "policyUrl": "https://www.spotify.com/legal/privacy-policy/",
-      "actions": [{ "label": "Account privacy settings", "url": "https://www.spotify.com/account/privacy/", "verified": false }] },
-    { "id": "apple", "name": "Apple", "domains": ["apple.com", "icloud.com"], "policyUrl": "https://www.apple.com/legal/privacy/en-ww/",
-      "actions": [{ "label": "Data and privacy page", "url": "https://privacy.apple.com", "verified": false }] },
-    { "id": "x", "name": "X (Twitter)", "domains": ["x.com", "twitter.com"], "policyUrl": "https://x.com/en/privacy",
-      "actions": [{ "label": "Privacy and safety settings", "url": "https://x.com/settings/privacy_and_safety", "verified": false }] },
-    { "id": "reddit", "name": "Reddit", "domains": ["reddit.com"], "policyUrl": "https://www.reddit.com/policies/privacy-policy",
-      "actions": [{ "label": "Privacy settings", "url": "https://www.reddit.com/settings/privacy", "verified": false }] },
-    { "id": "tiktok", "name": "TikTok", "domains": ["tiktok.com"], "policyUrl": "https://www.tiktok.com/legal/page/row/privacy-policy/en",
-      "actions": [] },
-    { "id": "amazon", "name": "Amazon", "domains": ["amazon.com"], "policyUrl": "https://www.amazon.com/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ",
-      "actions": [{ "label": "Advertising preferences", "url": "https://www.amazon.com/adprefs", "verified": false }] }
+        {
+          "label": "Review ad preferences",
+          "url": "https://www.facebook.com/adpreferences",
+          "verified": false
+        },
+        {
+          "label": "Privacy center",
+          "url": "https://www.facebook.com/privacy/center/",
+          "verified": false
+        }
+      ],
+      "render": true
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "domains": [
+        "microsoft.com",
+        "live.com",
+        "linkedin.com"
+      ],
+      "policyUrl": "https://privacy.microsoft.com/privacystatement",
+      "actions": [
+        {
+          "label": "Privacy dashboard",
+          "url": "https://account.microsoft.com/privacy",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn",
+      "domains": [
+        "linkedin.com"
+      ],
+      "policyUrl": "https://www.linkedin.com/legal/privacy-policy",
+      "actions": [
+        {
+          "label": "Data privacy settings",
+          "url": "https://www.linkedin.com/mypreferences/d/categories/privacy",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "domains": [
+        "spotify.com"
+      ],
+      "policyUrl": "https://www.spotify.com/legal/privacy-policy/",
+      "actions": [
+        {
+          "label": "Account privacy settings",
+          "url": "https://www.spotify.com/account/privacy/",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "domains": [
+        "apple.com",
+        "icloud.com"
+      ],
+      "policyUrl": "https://www.apple.com/legal/privacy/en-ww/",
+      "actions": [
+        {
+          "label": "Data and privacy page",
+          "url": "https://privacy.apple.com",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "id": "x",
+      "name": "X (Twitter)",
+      "domains": [
+        "x.com",
+        "twitter.com"
+      ],
+      "policyUrl": "https://x.com/en/privacy",
+      "actions": [
+        {
+          "label": "Privacy and safety settings",
+          "url": "https://x.com/settings/privacy_and_safety",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "id": "reddit",
+      "name": "Reddit",
+      "domains": [
+        "reddit.com"
+      ],
+      "policyUrl": "https://www.reddit.com/policies/privacy-policy",
+      "actions": [
+        {
+          "label": "Privacy settings",
+          "url": "https://www.reddit.com/settings/privacy",
+          "verified": false
+        }
+      ],
+      "render": true
+    },
+    {
+      "id": "tiktok",
+      "name": "TikTok",
+      "domains": [
+        "tiktok.com"
+      ],
+      "policyUrl": "https://www.tiktok.com/legal/page/row/privacy-policy/en",
+      "actions": []
+    },
+    {
+      "id": "amazon",
+      "name": "Amazon",
+      "domains": [
+        "amazon.com"
+      ],
+      "policyUrl": "https://www.amazon.com/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ",
+      "actions": [
+        {
+          "label": "Advertising preferences",
+          "url": "https://www.amazon.com/adprefs",
+          "verified": false
+        }
+      ],
+      "render": true
+    }
   ]
 }

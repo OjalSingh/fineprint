@@ -11,11 +11,29 @@ await mkdir('snapshots', { recursive: true });
 const now = new Date().toISOString();
 const failures = [];
 
+// Some policy pages are built with JavaScript, so a plain fetch gets an empty shell. For those
+// (marked "render": true in the registry) we open the page in a headless browser (Playwright, free).
+let browser;
+async function getHtml(s) {
+  if (s.render) {
+    if (!browser) {
+      const { chromium } = await import('playwright');
+      browser = await chromium.launch();
+    }
+    const page = await browser.newPage({ userAgent: 'Mozilla/5.0 (X11; Linux x86_64) FinePrintBot/0.1 (open-source privacy policy tracker)' });
+    try {
+      await page.goto(s.policyUrl, { waitUntil: 'networkidle', timeout: 60000 });
+      return await page.content();
+    } finally { await page.close(); }
+  }
+  const res = await fetch(s.policyUrl, { headers: { 'user-agent': 'FinePrintBot/0.1 (open-source privacy policy tracker)' }, redirect: 'follow' });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return await res.text();
+}
+
 for (const s of registry.services) {
   try {
-    const res = await fetch(s.policyUrl, { headers: { 'user-agent': 'FinePrintBot/0.1 (open-source privacy policy tracker)' }, redirect: 'follow' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const text = htmlToText(await res.text());
+    const text = htmlToText(await getHtml(s));
     if (text.length < 2000) throw new Error('page looks empty or JS-rendered');
     const hash = await sha256(text);
     let old = '';
@@ -32,4 +50,5 @@ for (const s of registry.services) {
 feed.changes = feed.changes.slice(0, 300);
 feed.updatedAt = now;
 await writeFile('feed/feed.json', JSON.stringify(feed, null, 1));
+if (browser) await browser.close();
 if (failures.length) console.warn('Could not fetch:\n' + failures.join('\n'));
