@@ -45,3 +45,14 @@ test('buildChange returns an entry with evidence', () => {
   assert.equal(c.impact, 'high');
   assert.equal(c.evidence.length, 1);
 });
+
+import { scanPolicy } from '../extension/core/scan.js';
+
+test('scan separates "we do not sell" from "we share with partners"', () => {
+  const text = 'We do not sell your personal information to anyone for money.\nWe may share your information with advertising partners and affiliates.';
+  const r = scanPolicy(text);
+  const sharing = r.find((x) => x.id === 'data_sharing');
+  assert.equal(sharing.negated, false);
+  assert.match(sharing.sentence, /advertising partners/);
+  assert.equal(scanPolicy('We do not sell your personal information to anyone for money.').find((x) => x.id === 'data_sharing').negated, true);
+});

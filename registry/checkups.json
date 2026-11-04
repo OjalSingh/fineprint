@@ -1,0 +1,44 @@
+{
+  "_note": "Hand-written from the policy text. status: happening | not_happening | unclear. Every quote must appear verbatim in the service's latest snapshot (checked daily). Action links are unverified until someone confirms them.",
+  "services": {
+    "meta": { "items": [
+      { "id": "meta-sell", "topic": "Selling your data", "status": "not_happening",
+        "summary": "Meta says it does not sell your information.",
+        "quotes": ["We don't sell any of your information to anyone, and we never will."] },
+      { "id": "meta-ai", "topic": "AI training", "status": "happening",
+        "summary": "Meta develops and improves its AI using information that can include your public posts, comments and your chats with Meta AI. The policy does not name a switch to stop this, and any objection option depends on where you live.",
+        "quotes": ["Develop and improve AI at Meta for Meta Products and for third parties.", "Public content you or others create or share, like posts, comments or audio on Meta Products"],
+        "action": { "label": "Look for an objection or privacy option in Meta's Privacy Center", "url": "https://www.facebook.com/privacy/center/", "verified": false,
+          "steps": ["Open the Privacy Center.", "Look for the AI section and any 'object' or 'opt out' option shown for your region.", "If there is none, the realistic options are to limit what you post publicly or leave."] } },
+      { "id": "meta-offsite-ads", "topic": "Ads based on your activity on other sites", "status": "happening",
+        "summary": "Meta uses information that advertisers and partners send about your activity off Meta to personalize the ads you see, even if you are not logged in.",
+        "quotes": ["Receiving and using information from third parties to tailor the ads you see"],
+        "action": { "label": "Review your ad preferences", "url": "https://www.facebook.com/adpreferences", "verified": false,
+          "steps": ["Open Ad preferences.", "Look for the settings about activity from partners (off-Meta activity) and ads shown based on it.", "Turn off what you don't want."] } },
+      { "id": "meta-measurement", "topic": "Reports to advertisers", "status": "happening",
+        "summary": "Meta gives businesses and advertisers measurement and audience insight reports about the people who see their ads.",
+        "quotes": ["Provide insights and measurement reports to businesses, advertisers and other partners"] }
+    ] },
+    "google": { "items": [
+      { "id": "google-ai", "topic": "AI training", "status": "happening",
+        "summary": "Google uses publicly available information to help train its AI models. The policy does not offer an opt-out for public web content.",
+        "quotes": ["we use publicly available information to help train Google's AI models"] },
+      { "id": "google-ads", "topic": "Personalized ads", "status": "happening",
+        "summary": "Depending on your settings, Google shows ads based on your interests and activity. You can turn this off.",
+        "quotes": ["we may also show you personalized ads based on your interests, activity"],
+        "action": { "label": "Open Google ad settings", "url": "https://myadcenter.google.com", "verified": false,
+          "steps": ["Open My Ad Center.", "Find the personalized ads switch.", "Turn it off."] } },
+      { "id": "google-sensitive-ads", "topic": "Ads based on sensitive topics", "status": "not_happening",
+        "summary": "Google says it does not personalize ads using sensitive categories such as race, religion, sexual orientation or health.",
+        "quotes": ["We don't show you personalized ads based on sensitive categories"] },
+      { "id": "google-activity", "topic": "Saved activity (searches, visits)", "status": "happening",
+        "summary": "Google saves activity from your account, such as searches and visits to Google Play. You can review and delete it.",
+        "quotes": ["My Activity allows you to review and control data that's saved to your Google Account"],
+        "action": { "label": "Review activity controls", "url": "https://myaccount.google.com/activitycontrols", "verified": false,
+          "steps": ["Open Activity controls.", "Pause or set auto-delete for Web & App Activity, YouTube history and Location History.", "Open My Activity to delete what is already saved."] } },
+      { "id": "google-sharing", "topic": "Sharing outside Google", "status": "not_happening",
+        "summary": "Google says it shares personal information outside Google with your consent, and otherwise only in limited cases such as legal or safety reasons.",
+        "quotes": ["We'll share personal information outside of Google when we have your consent"] }
+    ] }
+  }
+}

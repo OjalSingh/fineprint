@@ -3,6 +3,7 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { htmlToText, sha256 } from '../extension/core/text.js';
 import { buildChange } from '../extension/core/process.js';
+import { buildCheckups } from '../extension/core/checkup.js';
 
 const registry = JSON.parse(await readFile('registry/services.json', 'utf8'));
 let feed = { updatedAt: null, changes: [] };
@@ -51,4 +52,10 @@ feed.changes = feed.changes.slice(0, 300);
 feed.updatedAt = now;
 await writeFile('feed/feed.json', JSON.stringify(feed, null, 1));
 if (browser) await browser.close();
+// Re-verify every hand-written check-up quote against the newest snapshot.
+const checkups = JSON.parse(await readFile('registry/checkups.json', 'utf8'));
+const snaps = {};
+for (const id of Object.keys(checkups.services)) { try { snaps[id] = await readFile(`snapshots/${id}.txt`, 'utf8'); } catch { snaps[id] = null; } }
+const verified = buildCheckups(checkups, (id) => snaps[id]);
+await writeFile('feed/checkups.json', JSON.stringify({ updatedAt: now, services: verified }, null, 1));
 if (failures.length) console.warn('Could not fetch:\n' + failures.join('\n'));

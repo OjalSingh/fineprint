@@ -3,3 +3,4 @@ export const FEED_URL = 'https://raw.githubusercontent.com/OjalSingh/fineprint/m
 export const DONATE_URL = 'https://ojalsingh.netlify.app';
 export const CHECK_EVERY_MINUTES = 360; // feed check
 export const LOCAL_WATCH_EVERY_MINUTES = 1440; // custom sites you added
+export const CHECKUPS_URL = FEED_URL.replace('feed.json', 'checkups.json');

@@ -12,3 +12,8 @@ blockquote { margin: 6px 0; padding-left: 8px; border-left: 3px solid var(--b); 
 .row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
 button { font: inherit; cursor: pointer; } .primary { padding: 6px 10px; }
 .muted { opacity: .7; } label { display: block; padding: 2px 0; }
+
+.st { font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 4px; margin-left: 6px; }
+.st.happening { background: #b3261e22; color: #b3261e; } .st.not_happening { background: #1e8e3e22; color: #1e8e3e; } .st.unclear { background: #8884; }
+.steps { margin: 6px 0 0 16px; padding: 0; } details summary { cursor: pointer; margin-top: 6px; }
+.auto { font-size: 11px; opacity: .7; margin: 8px 0 4px; }

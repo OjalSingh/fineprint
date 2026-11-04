@@ -1,5 +1,5 @@
 // Local, free, rule-based classifier. No AI/API calls: it flags topics, it does not interpret law.
-const RULES = [
+export const RULES = [
   { id: 'ai_training', label: 'AI training', weight: 3, re: /(train(ing|ed)?|improv\w+|develop\w+).{0,60}(\bai\b|artificial intelligence|machine learning|generative|language model)|(\bai\b|generative|machine learning).{0,60}(train|model)/i },
   { id: 'data_sharing', label: 'Data sharing or sale', weight: 3, re: /\b(sell|sold|sale of|sharing)\b.{0,60}(data|information)|share.{0,60}(partners|third[- ]part|affiliates|advertisers)|disclose.{0,40}(third[- ]part|partners)/i },
   { id: 'biometrics', label: 'Biometrics or sensitive data', weight: 3, re: /biometric|faceprint|voiceprint|health data|precise location|genetic/i },

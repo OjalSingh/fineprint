@@ -1,4 +1,5 @@
-import { DONATE_URL } from './config.js';
+import { DONATE_URL, CHECKUPS_URL } from './config.js';
+import { scanPolicy } from './core/scan.js';
 
 const $ = (id) => document.getElementById(id);
 const SNOOZE_MS = 3 * 24 * 3600 * 1000;
@@ -52,7 +53,7 @@ async function watchThisSite() {
   if (!result) { $('watch-msg').textContent = "Couldn't find a privacy policy link on this page."; return; }
   const origin = new URL(result).origin + '/*';
   if (!(await chrome.permissions.request({ origins: [origin] }))) { $('watch-msg').textContent = 'Permission declined, nothing was added.'; return; }
-  if (!custom.some((c) => c.url === result)) await chrome.storage.sync.set({ custom: [...custom, { name: host, url: result }] });
+  if (!custom.some((c) => c.url === result)) await chrome.storage.sync.set({ custom: [...custom, { name: host, url: result }] }); chrome.runtime.sendMessage('check-now');
   $('watch-msg').textContent = `Now watching ${host} (checked from your browser about once a day).`; renderServices();
 }
 
@@ -93,3 +94,40 @@ $('sample').onclick = async () => {
   }, ...items] });
   renderInbox();
 };
+
+const LABEL = { happening: 'Happening', not_happening: 'Not happening', unclear: 'Unclear' };
+
+async function loadCheckups() {
+  try {
+    const data = await (await fetch(CHECKUPS_URL, { cache: 'no-cache' })).json();
+    await chrome.storage.local.set({ checkups: data });
+    return data;
+  } catch { return (await chrome.storage.local.get({ checkups: null })).checkups; }
+}
+
+async function renderCheckup() {
+  const { watched, custom } = await state();
+  const data = await loadCheckups();
+  const { snapshots } = await chrome.storage.local.get({ snapshots: {} });
+  let html = '';
+  for (const id of watched) {
+    const items = data?.services?.[id]?.items;
+    if (!items) continue;
+    html += `<h3>${esc(name(id))}</h3>` + items.map((it) => `
+      <div class="card"><h4>${esc(it.topic)}<span class="st ${esc(it.status)}">${LABEL[it.status] ?? ''}</span></h4>
+        <div>${esc(it.summary)}</div>
+        ${it.verified ? it.quotes.map((q) => `<blockquote>${esc(q)}</blockquote>`).join('') : '<div class="muted">Being re-checked against the latest policy, so the quote is hidden for now.</div>'}
+        ${it.action ? `<details><summary>${esc(it.action.label)}</summary><ol class="steps">${it.action.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol><div class="row"><a target="_blank" rel="noreferrer" href="${esc(it.action.url)}">Open page${it.action.verified ? '' : ' (link unverified)'}</a></div></details>` : ''}
+      </div>`).join('');
+  }
+  for (const site of custom) {
+    const snap = snapshots[site.url];
+    html += `<h3>${esc(site.name)}</h3><div class="auto">Auto-detected by keywords. Read the quote, it may be wrong.</div>`;
+    if (!snap) { html += '<p class="muted">Not read yet. Press Check now on the About tab.</p>'; continue; }
+    const found = scanPolicy(snap.text);
+    html += found.length ? found.map((f) => `<div class="card"><h4>${esc(f.label)}<span class="st unclear">${f.negated ? 'Policy says it does NOT' : 'Mentioned'}</span></h4><blockquote>${esc(f.sentence)}</blockquote></div>`).join('') : '<p class="muted">No sensitive topics detected.</p>';
+  }
+  $('checkup').innerHTML = html || '<p class="muted">Tick services in the Services tab to see what they do with your data today.</p>';
+}
+renderCheckup();
+document.addEventListener('change', () => setTimeout(renderCheckup, 150));
