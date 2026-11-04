@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Fine Print</title><link rel="stylesheet" href="popup.css"></head>
+<body>
+<header><strong>Fine Print</strong><nav><button data-tab="inbox" class="on">Changes</button><button data-tab="services">Services</button><button data-tab="about">About</button></nav></header>
+<main>
+  <section id="inbox"></section>
+  <section id="services" hidden>
+    <button id="watch-this" class="primary">Watch the site I'm on</button>
+    <p id="watch-msg" class="muted"></p>
+    <h3>Popular services</h3><div id="registry"></div>
+    <h3>Sites you added</h3><div id="custom"></div>
+  </section>
+  <section id="about" hidden>
+    <p>Fine Print compares each policy's wording with last time and flags topics like AI training, data sharing and tracking. It is a rule-based detector, not a lawyer, so always read the quoted text.</p>
+    <p><strong>Privacy:</strong> no account, no analytics. The public change feed is one file everyone downloads, and your list of watched services stays in your browser.</p>
+    <p><a id="donate" target="_blank" rel="noreferrer">Buy me a coffee</a> (free for everyone, always).</p>
+    <button id="check-now">Check now</button>
+  </section>
+</main>
+<script type="module" src="popup.js"></script>
+</body></html>

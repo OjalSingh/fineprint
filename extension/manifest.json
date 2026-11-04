@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Fine Print",
+  "version": "0.1.0",
+  "description": "Keeps track of privacy policy changes for the sites you use and tells you what to do about them. Free, open source, no account.",
+  "permissions": ["storage", "alarms", "activeTab", "scripting"],
+  "host_permissions": ["https://raw.githubusercontent.com/*"],
+  "optional_host_permissions": ["https://*/*"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_popup": "popup.html", "default_title": "Fine Print" }
+}
