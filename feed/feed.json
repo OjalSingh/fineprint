@@ -1,6 +1,33 @@
 {
- "updatedAt": "2026-11-04T20:23:56.590Z",
+ "updatedAt": "2026-11-05T13:16:39.378Z",
  "changes": [
+  {
+   "id": "meta-520de24b1532",
+   "service": "meta",
+   "url": "https://www.facebook.com/privacy/policy/",
+   "detectedAt": "2026-11-05T13:16:39.378Z",
+   "impact": "low",
+   "categories": [],
+   "summary": "0 sentence(s) added, 1 removed. No sensitive topics detected, but read the diff.",
+   "evidence": [],
+   "added": [],
+   "removed": [
+    "Contact the Data Protection Officer for Meta Platforms, Inc."
+   ],
+   "autoDetected": true,
+   "actions": [
+    {
+     "label": "Review ad preferences",
+     "url": "https://www.facebook.com/adpreferences",
+     "verified": false
+    },
+    {
+     "label": "Privacy center",
+     "url": "https://www.facebook.com/privacy/center/",
+     "verified": false
+    }
+   ]
+  },
   {
    "id": "meta-775b3a18e21c",
    "service": "meta",
