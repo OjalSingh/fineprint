@@ -1,6 +1,35 @@
 {
- "updatedAt": "2026-11-07T11:47:05.663Z",
+ "updatedAt": "2026-11-08T11:58:17.204Z",
  "changes": [
+  {
+   "id": "meta-520de24b1532",
+   "service": "meta",
+   "url": "https://www.facebook.com/privacy/policy/",
+   "detectedAt": "2026-11-08T11:58:17.204Z",
+   "impact": "low",
+   "categories": [],
+   "summary": "0 sentence(s) added, 3 removed. No sensitive topics detected, but read the diff.",
+   "evidence": [],
+   "added": [],
+   "removed": [
+    "Read the United States Regional Privacy Notice for more details about how we handle Personal Information and how to exercise your rights.",
+    "Privacy notice for United States residents",
+    "You can learn more about the consumer privacy rights that may be available to you by reviewing the United States Regional Privacy Notice ."
+   ],
+   "autoDetected": true,
+   "actions": [
+    {
+     "label": "Review ad preferences",
+     "url": "https://www.facebook.com/adpreferences",
+     "verified": false
+    },
+    {
+     "label": "Privacy center",
+     "url": "https://www.facebook.com/privacy/center/",
+     "verified": false
+    }
+   ]
+  },
   {
    "id": "meta-4842f61e8126",
    "service": "meta",
