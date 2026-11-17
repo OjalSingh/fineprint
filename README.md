@@ -98,7 +98,6 @@ The feed is built by a GitHub Action, so you can run your own:
 
 ## Known limits
 
-> Reddit and Amazon can be ticked but are not tracked yet (see Known limits), so they won't show cards.
 - Check-up cards exist for Meta and Google only so far.
 - Registry policy and settings links were written from memory and are marked `verified: false`. Please check and fix them.
 - A keyword detector misses subtle rewording and can over-flag. Always read the quoted text.
