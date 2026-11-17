@@ -10,7 +10,9 @@ The detector is rule-based and the registry links are community-checkable, so tr
 
 <img width="475" alt="Check-up tab showing a Meta card marked Happening, with the quoted policy sentence and opt-out steps" src="https://github.com/user-attachments/assets/fa2a48e7-71c0-486d-8ad8-8ae1f0348305" />
 
+
 <img width="476" alt="Services tab with popular services to tick and a Watch the site I'm on button" src="https://github.com/user-attachments/assets/6806284a-b317-4dd1-b906-0f8a4c1f3f12" />
+
 
 <img width="613" alt="About tab explaining the rule-based detector and the privacy model" src="https://github.com/user-attachments/assets/d2adf108-7e1e-442e-aca5-83ceee192a85" />
 
@@ -109,9 +111,5 @@ Fix the three uncaptured services, verify links, settings audit, pre-filled GDPR
 ## Contributing
 
 Edit `registry/services.json` (then copy it to `extension/services.json`) to add or fix a service. Add a test in `test/` for any change to the detector.
-
-## Support
-
-Free for everyone, forever. If it saved you time, you can [buy me a coffee](https://ojalsingh.netlify.app). Donations never unlock anything.
 
 MIT licensed.
