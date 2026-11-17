@@ -4,6 +4,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { htmlToText, sha256 } from '../extension/core/text.js';
 import { buildChange } from '../extension/core/process.js';
 import { buildCheckups } from '../extension/core/checkup.js';
+import { settle } from '../extension/core/stability.js';
 
 const registry = JSON.parse(await readFile('registry/services.json', 'utf8'));
 let feed = { updatedAt: null, changes: [] };
@@ -11,6 +12,8 @@ try { feed = JSON.parse(await readFile('feed/feed.json', 'utf8')); } catch {}
 await mkdir('snapshots', { recursive: true });
 const now = new Date().toISOString();
 const failures = [];
+let state = {};
+try { state = JSON.parse(await readFile('snapshots/state.json', 'utf8')); } catch {}
 
 // Some policy pages are built with JavaScript, so a plain fetch gets an empty shell. For those
 // (marked "render": true in the registry) we open the page in a headless browser (Playwright, free).
@@ -39,16 +42,23 @@ for (const s of registry.services) {
     const hash = await sha256(text);
     let old = '';
     try { old = await readFile(`snapshots/${s.id}.txt`, 'utf8'); } catch {}
-    if (old && (await sha256(old)) !== hash) {
-      const change = buildChange({ service: s.id, url: s.policyUrl, oldText: old, newText: text, hash, now });
+    if (!old) { await writeFile(`snapshots/${s.id}.txt`, text); continue; } // first run: set baseline
+
+    const oldHash = await sha256(old);
+    const { accept, entry } = settle(state[s.id], oldHash, hash);
+    if (entry) state[s.id] = entry; else delete state[s.id];
+
+    if (accept) {
+      const changeKey = await sha256(oldHash + hash + now); // unique per change event
+      const change = buildChange({ service: s.id, url: s.policyUrl, oldText: old, newText: text, hash: changeKey, now });
       if (change) feed.changes.unshift({ ...change, actions: s.actions });
+      await writeFile(`snapshots/${s.id}.txt`, text); // baseline moves only when accepted
     }
-    await writeFile(`snapshots/${s.id}.txt`, text);
   } catch (e) {
     failures.push(`${s.id}: ${e.message}`);
   }
 }
-feed.changes = feed.changes.slice(0, 300);
+await writeFile('snapshots/state.json', JSON.stringify(state, null, 1));feed.changes = feed.changes.slice(0, 300);
 feed.updatedAt = now;
 await writeFile('feed/feed.json', JSON.stringify(feed, null, 1));
 if (browser) await browser.close();
