@@ -1,6 +1,22 @@
 {
- "updatedAt": "2026-11-17T09:13:45.425Z",
+ "updatedAt": "2026-11-17T14:30:23.098Z",
  "changes": [
+  {
+   "id": "tiktok-01966815499f",
+   "service": "tiktok",
+   "url": "https://www.tiktok.com/legal/page/row/privacy-policy/en",
+   "detectedAt": "2026-11-17T14:30:23.098Z",
+   "impact": "low",
+   "categories": [],
+   "summary": "1 sentence(s) added, 0 removed. No sensitive topics detected, but read the diff.",
+   "evidence": [],
+   "added": [
+    "We may also share certain Usage Information with sellers and creators, for example, to help them identify their most engaged customers."
+   ],
+   "removed": [],
+   "autoDetected": true,
+   "actions": []
+  },
   {
    "id": "microsoft-4f44194ebd06",
    "service": "microsoft",

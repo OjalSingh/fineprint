@@ -218,7 +218,7 @@ where the dispute relates to a claim for a sum within the limits specified by th
 for all other disputes, the parties shall seek settlement of that dispute by mediation in accordance with the Mediation Rules of the DIFC-LCIA Arbitration Centre, which Rules are deemed to be incorporated by reference to this clause. If the dispute is not settled by mediation within 30 days of the commencement of the mediation, or such further period as the parties shall agree in writing, the dispute shall be referred to and finally resolved by arbitration under the Arbitration Rules of the DIFC-LCIA Arbitration Centre, which Rules are deemed to be incorporated by reference to this clause. The language to be used in the mediation and in the arbitration, shall be English. In any arbitration commenced pursuant to this clause the number of arbitrators shall be one and the arbitration shall be conducted in Dubai.
 Vietnam
 If you are using our services in Vietnam, the following additional terms apply. In the event of any conflict between the following additional terms and the provisions of the main body of this policy, the following terms shall prevail.
-Methods of processing your personal data . We may process your personal data by manual or automated methods.
+Methods of processing your personal data. We may process your personal data by manual or automated methods. We may also share certain Usage Information with sellers and creators, for example, to help them identify their most engaged customers.
 Data subject s rights and obligations. Subject to certain exceptions, you have statutory rights and obligations under applicable laws. In particular, you have the following statutory rights:
 Right to know;
 Right to consent and withdraw consent;
