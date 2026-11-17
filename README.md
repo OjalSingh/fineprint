@@ -109,6 +109,6 @@ Fix the three uncaptured services, verify links, settings audit, pre-filled GDPR
 
 ## Contributing
 
-Edit `registry/services.json` (then copy it to `extension/services.json`) to add or fix a service. Add a test in `test/` for any change to the detector.
+Edit `registry/services.json`, then run `npm run sync` to copy it into `extension/services.json`, to add or fix a service. Add a test in `test/` for any change to the detector.
 
 MIT licensed.

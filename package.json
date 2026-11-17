@@ -4,6 +4,6 @@
   "private": true,
   "type": "module",
   "description": "Free, open-source browser extension that watches privacy policies and tells you what changed and what to do.",
-  "scripts": { "test": "node --test test/*.test.js", "watch": "node scripts/watch.mjs" },
+  "scripts": { "test": "node --test test/*.test.js",  "sync": "node scripts/sync.mjs", "watch": "node scripts/watch.mjs" },
   "license": "MIT"
 }
