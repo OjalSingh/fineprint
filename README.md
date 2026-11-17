@@ -46,7 +46,7 @@ Extension -> downloads the whole feed -> shows only the services YOU watch
 
 ## Cost: zero
 
-A static file on GitHub, a free scheduled GitHub Action, no paid APIs. The only possible spend is Chrome's one-time $5 developer fee if you publish to the Web Store.
+A static file on GitHub, a free scheduled GitHub Action, no paid APIs.
 
 ## Known limits
 
